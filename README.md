@@ -607,6 +607,10 @@ Default wiring used by the package:
 - `gpio_busy: -1` → optional / unused for SX127x
 - `gpio_rxen: -1` and `gpio_txen: -1` → optional RF front-end control lines
 
+Input/output status on Raspberry Pi 5:
+![Input/output status on Raspberry Pi 5](images/GPIO-Pinout-Diagram-2.png)
+
+
 The `-1` value means that the line is not used in the packaged default configuration.
 
 Example block:
