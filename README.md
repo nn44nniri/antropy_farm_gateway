@@ -53,9 +53,9 @@ The package stores raw received packets in SQLite, keeps a rolling history, runs
 ### 1) Reference trend formalism
 The article assumes that the average of all installed sensors represents the overall greenhouse environment.
 
-\[
+$$
 R_t = \frac{1}{n}\sum_{k=1}^{n} T_{k,t}
-\]
+$$
 
 Where:
 - \(R_t\) is the reference trend at time step \(t\)
