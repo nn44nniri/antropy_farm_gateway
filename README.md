@@ -67,23 +67,23 @@ In the package, this same arithmetic mean is used as the baseline trend for temp
 ### 2) Combination trend formalism
 For each selected subset of sensors, the package computes a subset trend.
 
-\[
+$$
 C_t = \frac{1}{p}\sum_{k \in S} T_{k,t}
-\]
+$$
 
 Where:
-- \(C_t\) is the combination trend at time step \(t\)
-- \(p\) is the number of selected sensors in subset \(S\)
-- \(S\) is the selected sensor set
+- $(C_t)$ is the combination trend at time step $(t)$
+- $(p)$ is the number of selected sensors in subset $(S)$
+- $(S)$ is the selected sensor set
 
 This formalism is used to compare every candidate subset against the all-sensor reference trend.
 
 ### 3) Error trend formalism
 The article evaluates each subset through the difference between the reference and combination trends.
 
-\[
+$$
 E_t = R_t - C_t
-\]
+$$
 
 Where:
 - \(E_t\) is the error trend at time step \(t\)
@@ -95,9 +95,9 @@ The package then derives ranking statistics from this error series.
 ### 4) Performance index formalism
 The error-based ranking uses the article's performance index.
 
-\[
+$$
 I_i = S_1(E_i) + S_2(E_i) + S_3(E_i) + S_4(E_i)
-\]
+$$
 
 Where:
 - \(I_i\) is the performance index for sensor combination \(i\)
@@ -111,9 +111,9 @@ Higher \(I_i\) means a better subset for representing the full facility.
 ### 5) Ranking score formalism
 The article scores rankings using the table-based rule:
 
-\[
+$$
 S_i = (2^n - 1 - R + 1)
-\]
+$$
 
 Where:
 - \(2^n - 1\) is the number of non-empty combinations
@@ -125,9 +125,9 @@ The package follows this ranking idea to preserve the article's combination-orde
 ### 6) Information entropy formalism
 The article uses entropy to prefer sensor locations with high information content.
 
-\[
+$$
 H(X) = \sum_{i=1}^{m} P_i(E)\log_2 P_i(E)
-\]
+$$
 
 Where:
 - \(H(X)\) is the information entropy for one sensor
@@ -139,9 +139,9 @@ In practice, the package uses Shannon-style entropy over histogram bins and igno
 ### 7) Joint entropy formalism
 The article also states:
 
-\[
+$$
 H(X,Y) = H(X) + H(Y|X)
-\]
+$$
 
 Where:
 - \(H(X,Y)\) is the joint entropy of two sensors
@@ -152,9 +152,9 @@ This supports the idea that an optimal subset should maximise information while 
 ### 8) Total entropy formalism
 The article's total-entropy criterion is:
 
-\[
+$$
 \sum_{i=1}^{n} T(X_i, X_j, \ldots, X_p) = H(X_k) + \cdots + H(X_p) + \sum_{i=1}^{n-p}\sum_{j=k}^{p} H(X_i, X_j)
-\]
+$$
 
 Where:
 - the first term sums entropy across selected sensors
@@ -167,9 +167,9 @@ The package implements a practical selected-plus-pairwise-information approximat
 ### 9) RMSE formalism
 The article verifies how closely a subset follows the reference trend using RMSE.
 
-\[
+$$
 RMSE = \sqrt{\frac{\sum_{i=1}^{N}(R_i - C_i)^2}{N}}
-\]
+$$
 
 Where:
 - \(RMSE\) is root mean square error
@@ -182,9 +182,9 @@ Lower RMSE means the chosen subset better represents the all-sensor trend.
 ### 10) MAPE formalism
 The article also uses percentage error.
 
-\[
+$$
 MAPE = \frac{100}{N}\sum_{i=1}^{N}\left|\frac{R_i - C_i}{R_i}\right|
-\]
+$$
 
 Where:
 - \(MAPE\) is mean absolute percentage error
@@ -197,9 +197,9 @@ Lower MAPE means the subset reproduces the reference trend more accurately in re
 ### 11) z-index formalism
 The article uses a z-index for the error trend distribution.
 
-\[
+$$
 z\text{-index} = \frac{mean(Error)}{sd(Error)}
-\]
+$$
 
 Where:
 - `mean(Error)` is the average error over time
