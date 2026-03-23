@@ -1,0 +1,180 @@
+{
+  "facility": {
+    "facility_id": "greenhouse-demo-01",
+    "length_m": 30.0,
+    "width_m": 34.4,
+    "height_m": 5.7,
+    "eave_height_m": 4.5,
+    "ridge_height_m": 5.7,
+    "orientation": "north-south",
+    "ceiling": {
+      "material": "polyolefin_film",
+      "thickness_m": 0.00015,
+      "u_value_w_m2k": 5.8
+    },
+    "floor": {
+      "material": "concrete",
+      "thickness_m": 0.15,
+      "u_value_w_m2k": 1.7
+    },
+    "north_wall": {
+      "material": "double_layer_polyolefin",
+      "thickness_m": 0.0003,
+      "u_value_w_m2k": 4.9
+    },
+    "south_wall": {
+      "material": "double_layer_polyolefin",
+      "thickness_m": 0.0003,
+      "u_value_w_m2k": 4.9
+    },
+    "east_wall": {
+      "material": "double_layer_polyolefin",
+      "thickness_m": 0.0003,
+      "u_value_w_m2k": 4.9
+    },
+    "west_wall": {
+      "material": "double_layer_polyolefin",
+      "thickness_m": 0.0003,
+      "u_value_w_m2k": 4.9
+    },
+    "vents": [
+      {
+        "name": "roof_vent_1",
+        "wall": "roof",
+        "x_m": 4.0,
+        "y_m": 17.2,
+        "z_m": 5.2,
+        "width_m": 2.0,
+        "height_m": 0.83,
+        "kind": "roof"
+      },
+      {
+        "name": "side_vent_east",
+        "wall": "east",
+        "x_m": 15.0,
+        "y_m": 34.4,
+        "z_m": 2.25,
+        "width_m": 28.0,
+        "height_m": 1.66,
+        "kind": "side"
+      },
+      {
+        "name": "side_vent_west",
+        "wall": "west",
+        "x_m": 15.0,
+        "y_m": 0.0,
+        "z_m": 2.25,
+        "width_m": 28.0,
+        "height_m": 1.66,
+        "kind": "side"
+      }
+    ],
+    "sensor_positions": [
+      {
+        "sensor_id": 1,
+        "label": "P-1",
+        "x_m": 6.0,
+        "y_m": 7.0,
+        "z_m": 0.9
+      },
+      {
+        "sensor_id": 2,
+        "label": "P-2",
+        "x_m": 14.0,
+        "y_m": 3.0,
+        "z_m": 0.9
+      },
+      {
+        "sensor_id": 3,
+        "label": "P-3",
+        "x_m": 23.0,
+        "y_m": 7.0,
+        "z_m": 0.9
+      },
+      {
+        "sensor_id": 4,
+        "label": "P-4",
+        "x_m": 8.0,
+        "y_m": 17.2,
+        "z_m": 0.9
+      },
+      {
+        "sensor_id": 5,
+        "label": "P-5",
+        "x_m": 15.0,
+        "y_m": 17.2,
+        "z_m": 0.9
+      },
+      {
+        "sensor_id": 6,
+        "label": "P-6",
+        "x_m": 22.0,
+        "y_m": 17.2,
+        "z_m": 0.9
+      },
+      {
+        "sensor_id": 7,
+        "label": "P-7",
+        "x_m": 7.0,
+        "y_m": 27.5,
+        "z_m": 0.9
+      },
+      {
+        "sensor_id": 8,
+        "label": "P-8",
+        "x_m": 15.0,
+        "y_m": 31.4,
+        "z_m": 0.9
+      },
+      {
+        "sensor_id": 9,
+        "label": "P-9",
+        "x_m": 23.0,
+        "y_m": 27.5,
+        "z_m": 0.9
+      }
+    ]
+  },
+  "lora": {
+    "device": "/tmp/antropy_lora_feed",
+    "baud_rate": 115200,
+    "run_mode": "test", 
+    "mock_input_file": "config/mock_lora_input.csv",
+    "enable_mock_input": true,
+    "transport": "spi",
+    "module_family": "sx127x",
+    "sx127x_pins": {
+      "spi_bus": 0,
+      "spi_chip_select": 0,
+      "gpio_mosi": 10,
+      "gpio_miso": 9,
+      "gpio_sck": 11,
+      "gpio_cs": 8,
+      "gpio_reset": 25,
+      "gpio_dio0": 24,
+      "gpio_dio1": 23,
+      "gpio_dio2": -1,
+      "gpio_busy": -1,
+      "gpio_rxen": -1,
+      "gpio_txen": -1
+    }
+  },
+  "grpc": {
+    "uds_path": "/tmp/sensors-interface.sock",
+    "interface_name": "sensors-interface",
+    "deadline_ms": 3000
+  },
+  "algorithm": {
+    "max_selected_sensors": 2,
+    "min_history_per_sensor": 12,
+    "outlier_tolerance_temperature_c": 0.1,
+    "outlier_tolerance_humidity_pct": 1.0,
+    "entropy_bin_width_temperature_c": 0.05,
+    "entropy_bin_width_humidity_pct": 0.5,
+    "rolling_window_size": 144
+  },
+  "database": {
+    "enabled": true,
+    "path": "data/antropy_gateway.db"
+  }
+}

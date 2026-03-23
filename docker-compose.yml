@@ -1,0 +1,9 @@
+services:
+  antropy_farm_gateway:
+    build: .
+    container_name: antropy_farm_gateway
+    volumes:
+      - ./config:/opt/antropy_farm_gateway/config
+      - /tmp:/tmp
+      - ./data:/opt/antropy_farm_gateway/data
+    restart: unless-stopped

@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package antropy.gateway.v1;
+
+message FacilityPoint {
+  uint32 sensor_id = 1;
+  double x_m = 2;
+  double y_m = 3;
+  double z_m = 4;
+  double latest_temperature_c = 5;
+  double latest_humidity_pct = 6;
+}
+
+message RankedCombination {
+  repeated uint32 sensor_ids = 1;
+  double performance_index = 2;
+  double total_entropy = 3;
+  double rmse = 4;
+  double mape = 5;
+  double mean_error = 6;
+  double stddev_error = 7;
+  uint32 outlier_count = 8;
+  double z_index = 9;
+}
+
+message OptimizationReport {
+  string facility_id = 1;
+  string created_at_utc = 2;
+  string metric_name = 3;
+  uint32 total_sensors = 4;
+  uint32 samples_per_sensor = 5;
+  repeated FacilityPoint latest_points = 6;
+  repeated RankedCombination best_error_based = 7;
+  repeated RankedCombination best_entropy_based = 8;
+}
+
+message Ack {
+  bool ok = 1;
+  string message = 2;
+}
+
+service SensorsInterface {
+  rpc PushOptimization(OptimizationReport) returns (Ack);
+}
