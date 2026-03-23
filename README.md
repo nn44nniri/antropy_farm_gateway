@@ -58,9 +58,9 @@ R_t = \frac{1}{n}\sum_{k=1}^{n} T_{k,t}
 $$
 
 Where:
-- \(R_t\) is the reference trend at time step \(t\)
-- \(n\) is the total number of installed sensors
-- \(T_{k,t}\) is the measured value from sensor \(k\) at time \(t\)
+- $(R_t)$ is the reference trend at time step $(t)$
+- $(n)$ is the total number of installed sensors
+- $(T_{k,t})$ is the measured value from sensor $(k)$ at time $(t)$
 
 In the package, this same arithmetic mean is used as the baseline trend for temperature and, by extension, humidity.
 
@@ -86,9 +86,9 @@ E_t = R_t - C_t
 $$
 
 Where:
-- \(E_t\) is the error trend at time step \(t\)
-- \(R_t\) is the reference trend
-- \(C_t\) is the combination trend
+- $(E_t)$ is the error trend at time step $(t)$
+- $(R_t)$ is the reference trend
+- $(C_t)$ is the combination trend
 
 The package then derives ranking statistics from this error series.
 
@@ -100,13 +100,13 @@ I_i = S_1(E_i) + S_2(E_i) + S_3(E_i) + S_4(E_i)
 $$
 
 Where:
-- \(I_i\) is the performance index for sensor combination \(i\)
-- \(S_1\) is the score for mean error
-- \(S_2\) is the score for standard deviation of error
-- \(S_3\) is the score for outlier count
-- \(S_4\) is the score for z-test or z-index behaviour
+- $(I_i)$ is the performance index for sensor combination $(i)$
+- $(S_1)$ is the score for mean error
+- $(S_2)$ is the score for standard deviation of error
+- $(S_3)$ is the score for outlier count
+- $(S_4)$ is the score for z-test or z-index behaviour
 
-Higher \(I_i\) means a better subset for representing the full facility.
+Higher $(I_i)$ means a better subset for representing the full facility.
 
 ### 5) Ranking score formalism
 The article scores rankings using the table-based rule:
@@ -116,9 +116,9 @@ S_i = (2^n - 1 - R + 1)
 $$
 
 Where:
-- \(2^n - 1\) is the number of non-empty combinations
-- \(R\) is the rank of a given combination for a given statistic
-- \(S_i\) is the resulting score contribution
+- $(2^n - 1)$ is the number of non-empty combinations
+- $(R)$ is the rank of a given combination for a given statistic
+- $(S_i)$ is the resulting score contribution
 
 The package follows this ranking idea to preserve the article's combination-order logic.
 
@@ -130,9 +130,9 @@ H(X) = \sum_{i=1}^{m} P_i(E)\log_2 P_i(E)
 $$
 
 Where:
-- \(H(X)\) is the information entropy for one sensor
-- \(P_i(E)\) is the probability mass function of the measured variable in bin \(i\)
-- \(m\) is the number of bins over the sensor's measured range
+- $(H(X))$ is the information entropy for one sensor
+- $(P_i(E))$ is the probability mass function of the measured variable in bin $(i)$
+- $(m)$ is the number of bins over the sensor's measured range
 
 In practice, the package uses Shannon-style entropy over histogram bins and ignores zero-probability bins.
 
@@ -144,8 +144,8 @@ H(X,Y) = H(X) + H(Y|X)
 $$
 
 Where:
-- \(H(X,Y)\) is the joint entropy of two sensors
-- \(H(Y|X)\) is conditional entropy
+- $(H(X,Y))$ is the joint entropy of two sensors
+- $(H(Y|X))$ is conditional entropy
 
 This supports the idea that an optimal subset should maximise information while reducing redundancy.
 
@@ -172,10 +172,10 @@ RMSE = \sqrt{\frac{\sum_{i=1}^{N}(R_i - C_i)^2}{N}}
 $$
 
 Where:
-- \(RMSE\) is root mean square error
-- \(N\) is the total number of samples
-- \(R_i\) is the reference trend value at sample \(i\)
-- \(C_i\) is the combination trend value at sample \(i\)
+- $(RMSE)$ is root mean square error
+- $(N)$ is the total number of samples
+- $(R_i)$ is the reference trend value at sample $(i)$
+- $(C_i)$ is the combination trend value at sample $(i)$
 
 Lower RMSE means the chosen subset better represents the all-sensor trend.
 
@@ -187,10 +187,10 @@ MAPE = \frac{100}{N}\sum_{i=1}^{N}\left|\frac{R_i - C_i}{R_i}\right|
 $$
 
 Where:
-- \(MAPE\) is mean absolute percentage error
-- \(N\) is the total number of samples
-- \(R_i\) is the reference trend value
-- \(C_i\) is the combination trend value
+- $(MAPE)$ is mean absolute percentage error
+- $(N)$ is the total number of samples
+- $(R_i)$ is the reference trend value
+- $(C_i)$ is the combination trend value
 
 Lower MAPE means the subset reproduces the reference trend more accurately in relative terms.
 
