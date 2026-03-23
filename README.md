@@ -12,6 +12,11 @@ Large controlled facilities such as greenhouses, poultry houses, and cattle barn
 
 The attached article addressed this problem for a naturally ventilated and heat-pump-conditioned greenhouse. It showed that the common assumption that the centre sensor always represents the whole facility is not reliable under all seasonal and control conditions. For that reason, the gateway in this repository is designed to evaluate sensor positions quantitatively, preserve the full ranking logic, and expose the resulting best sensor combinations to downstream control services.
 
+Optimization diagram of temperature and humidity sensors in the hall:
+
+![Optimization diagram of temperature and humidity sensors in the hall](images/Industrial_cattle_farming_diagram.drawio.png)
+
+
 ## Problem questions
 
 1. Can a small number of sensors accurately represent the entire internal environment of a controlled facility?
